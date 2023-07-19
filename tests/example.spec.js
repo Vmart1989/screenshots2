@@ -1,37 +1,27 @@
 // @ts-check
 const { test, expect } = require("@playwright/test");
 
-// BD
-
-// const mysql = db.mysql
-// const sql = db.sql
-// const con = db.con
-
-// let paginas = [
-//   "playwright.dev",
-//   "playwright.dev/docs/running-tests"
-// ];
-
-
 let date = new Date().toLocaleDateString("es-ES").replaceAll("/", "");
 let time = new Date().toLocaleTimeString("es-ES").replaceAll(":", "");
 
+// import database connection
 let db = require('../db_connection');
 
 let webs = [];
-
+// SQL QUERY
 db.con.query(db.sql, function (err, result) {
   if (err) throw err;
   result.forEach(element => {
+    // FILL WEBS ARRAY
       webs.push(element.url)
       
   });  
 });
 
-console.log(webs)
 
+// TEST
 test("screenshot", async ({ page }) => {
-  console.table(webs)
+  // console.table(webs)
   for (let i = 0; i < webs.length; i++) {
     const pagina = webs[i];
     const paginaURL = pagina.replaceAll("/", "-");

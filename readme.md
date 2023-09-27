@@ -1,6 +1,6 @@
 ## Website Screenshot Taker with PlayWright
 
-Use automatization to keep track of changes in your websites. 
+Use automatization to keep track of visual changes in your websites. It takes a snapshot of one or more websites and stores it a database.
 
 
 To run use:
